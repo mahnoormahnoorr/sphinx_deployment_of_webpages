@@ -1,6 +1,6 @@
 WARNING: This repo is in development stage. 
 
-## Sphinx Deployment of Webpages
+## Sphinx Deployment of Webpage
 
 This repo contain information about sphinx deployment of github into a webpage. Instractuion folder has all relevant information about how to run it. 
 
@@ -10,3 +10,27 @@ Build will be the empty folder where files will store up after you run the webpa
 
 Source is the folder where you put all relevant files that you need in your webpage. 
 
+## Deployment Through Github
+
+Copy your `html` folder from `docs/build/html` to `docs/`. The Docs should look like this: 
+
+
+
+```bash
+docs/
+├── index.html        ✅ from build/html
+├── _static/          ✅ from build/html
+├── _sources/         ✅ from build/html
+├── search.html       ✅ from build/html
+├── .nojekyll         ✅ you create this
+└── source/           ← your Sphinx source (already there)
+
+```
+
+Go to Settings → Pages, 
+Under Source:
+  Branch: main
+  Folder: /docs
+Save
+
+Your site will be live. 
