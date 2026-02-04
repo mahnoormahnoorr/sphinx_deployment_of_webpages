@@ -1,0 +1,90 @@
+/* ============================
+   LUMI brand theme for Sphinx
+   ============================ */
+
+/* ---- Sidebar (navigation) ---- */
+.wy-nav-side {
+  background: #231f20; /* black */
+}
+
+.wy-side-scroll {
+  background: #231f20;
+}
+
+/* Sidebar search */
+.wy-side-nav-search {
+  background: #231f20;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.wy-side-nav-search input[type="text"] {
+  border-radius: 4px;
+}
+
+/* Sidebar links */
+.wy-menu-vertical a {
+  color: rgba(255,255,255,0.9);
+}
+
+.wy-menu-vertical a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.wy-menu-vertical li.current > a {
+  background: #2c6789; /* blue */
+  color: #ffffff;
+  border-right: 4px solid #ec008c; /* pink accent */
+}
+
+/* ---- Top bar (mobile) ---- */
+.wy-nav-top {
+  background: #231f20;
+}
+
+/* ---- Main content area ---- */
+.wy-nav-content {
+  background: #ffffff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #231f20;
+}
+
+/* Section header underline accent */
+h2 {
+  border-bottom: 2px solid #7477b8; /* purple */
+  padding-bottom: 0.3em;
+}
+
+/* Links */
+a {
+  color: #2c6789; /* blue */
+}
+
+a:hover {
+  color: #ec008c; /* pink */
+}
+
+/* Inline code */
+code {
+  background: rgba(44, 103, 137, 0.08);
+  color: #231f20;
+  border-radius: 4px;
+}
+
+/* Code blocks */
+.highlight {
+  background: #f7f7f7;
+  border-left: 4px solid #7477b8;
+}
+
+/* Admonitions (notes, warnings, etc.) */
+.admonition-title {
+  background: #7477b8 !important;
+  color: #ffffff !important;
+}
+
+.admonition {
+  border-left: 4px solid #ec008c;
+}
