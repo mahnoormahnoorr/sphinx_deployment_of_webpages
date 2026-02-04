@@ -8,9 +8,9 @@ Quantization is a key technique for reducing model size and inference cost, enab
 
 We provide examples and experiments for:
 
-- **[BitsAndBytes (bnb)](https://github.com/mahnoormahnoorr/Quantization/tree/main/bitsand)
-- **[AWQ (Activation-aware Weight Quantization)](https://github.com/mahnoormahnoorr/Quantization/tree/main/AWQ)
-- **[GPTQ (Gradient Post-training Quantization)](https://github.com/mahnoormahnoorr/Quantization/tree/main/GPTQ)
+- [BitsAndBytes (bnb)](https://github.com/mahnoormahnoorr/Quantization/tree/main/bitsand)
+- [AWQ (Activation-aware Weight Quantization)](https://github.com/mahnoormahnoorr/Quantization/tree/main/AWQ)
+- [GPTQ (Gradient Post-training Quantization)](https://github.com/mahnoormahnoorr/Quantization/tree/main/GPTQ)
 
 ---
 
