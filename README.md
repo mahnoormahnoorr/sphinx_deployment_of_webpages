@@ -1,4 +1,4 @@
-##sphinx_deployment_of_webpages
+## Sphinx Deployment of Webpages
 
 This repo contain information about sphinx deployment of github into a webpage. Instractuion folder has all relevant information about how to run it. 
 
