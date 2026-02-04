@@ -87,5 +87,4 @@ The licensor cannot revoke these freedoms as long as you follow these license te
   license permits.
 
 
-^G Get Help    ^O WriteOut    ^R Read File   ^Y Prev Pg     ^K Cut Text    ^C Cur Pos     
-^X Exit        ^J Justify     ^W Where is    ^V Next Pg     ^U UnCut Text  ^T To Spell    
+
