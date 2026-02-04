@@ -44,9 +44,6 @@ GPTQ.md
 AWQ.md
 BitsAndBytes.md
 
-
-
-
 ```
 
 ## See also
