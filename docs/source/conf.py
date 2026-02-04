@@ -34,6 +34,10 @@ html_favicon = "_static_/favicon.png"
 html_css_files = [
     "lumi.css",
 ]
+html_theme_options = {
+    "logo_only": True,
+    "display_version": False,
+}
 
 source_suffix = {
     ".rst": "restructuredtext",
