@@ -28,9 +28,12 @@ language = 'en'
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static_']
-html_logo = "img/LUMI_light.svg"
-html_favicon = "img/favicon.png"
-
+html_logo = "_static_/LUMI_light.svg"
+html_favicon = "_static_/favicon.png"
+# Load your custom CSS overrides
+html_css_files = [
+    "lumi.css",
+]
 
 source_suffix = {
     ".rst": "restructuredtext",
