@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantization Examples with Transformers &amp; LLM Compressor &mdash; quant v.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/lumi.css?v=4a224b01" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8a49c756"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AWQ Quantization with LLM Compressor" href="AWQ.html" />
+    <link rel="prev" title="Quantization" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/LUMI_light.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantization Examples with Transformers &amp; LLM Compressor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installations">Installations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-the-module">Load the module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-and-activate-a-virtual-environment-using-system-packages">Create and activate a virtual environment using system packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-packages">Install packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gptq-config-py"><code class="docutils literal notranslate"><span class="pre">gptq-config.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gptq-modifier-py"><code class="docutils literal notranslate"><span class="pre">gptq-modifier.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-includes">Output Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWQ.html">AWQ Quantization with LLM Compressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BitsAndBytes.html">BitsAndBytes Quantization with Transformers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">quant</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quantization Examples with Transformers &amp; LLM Compressor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GPTQ.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quantization-examples-with-transformers-llm-compressor">
+<h1>Quantization Examples with Transformers &amp; LLM Compressor<a class="headerlink" href="#quantization-examples-with-transformers-llm-compressor" title="Link to this heading"></a></h1>
+<p>This repository contains two practical examples of applying GPTQ quantization to LLMs.<br />
+Both examples currently use the small <strong>OPT-125M</strong> model for demonstration, but the code is written so you can swap in larger models.</p>
+<ol class="arabic simple">
+<li><p><strong>GPTQConfig</strong> — Uses Hugging Face <code class="docutils literal notranslate"><span class="pre">transformers</span></code> and <a class="reference external" href="https://huggingface.co/docs/transformers/en/quantization/gptq"><code class="docutils literal notranslate"><span class="pre">GPTQConfig</span></code></a> to quantize the <strong>OPT-125M</strong> model.</p></li>
+<li><p><strong>GPTQModifier</strong> — Uses <a class="reference external" href="https://github.com/vllm-project/llm-compressor">LLM Compressor</a> with a GPTQ recipe to quantize the <strong>OPT-125M</strong> model.</p></li>
+</ol>
+<hr class="docutils" />
+<section id="installations">
+<h2>Installations<a class="headerlink" href="#installations" title="Link to this heading"></a></h2>
+<p>The CSC preinstalled PyTorch module covers most of the libraries needed to run these examples
+(torch, transformers, datasets, accelerate). The rest can be installed on top of the module in a virtual environment.</p>
+<section id="load-the-module">
+<h3>Load the module<a class="headerlink" href="#load-the-module" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>use<span class="w"> </span>/appl/local/csc/modulefiles
+module<span class="w"> </span>load<span class="w"> </span>pytorch/2.7
+</pre></div>
+</div>
+</section>
+<section id="create-and-activate-a-virtual-environment-using-system-packages">
+<h3>Create and activate a virtual environment using system packages<a class="headerlink" href="#create-and-activate-a-virtual-environment-using-system-packages" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>--system-site-packages<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</pre></div>
+</div>
+</section>
+<section id="install-packages">
+<h3>Install packages<a class="headerlink" href="#install-packages" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>optimum<span class="w"> </span>--cache-dir<span class="w"> </span>./.pip-cache
+</pre></div>
+</div>
+<p>The flag –cache-dir points the pip cache to the current (scratch) folder instead of the default (home directory), to avoid filling up home directory quota.</p>
+<p>The GPTQmodel library is needed for the <strong>gptq-config</strong> example. To install it on Puhti or Mahti, you need to use a GPU interactively when installing, or set the following environment variable:</p>
+<ul class="simple">
+<li><p>For Puhti:<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">TORCH_CUDA_ARCH_LIST=&quot;7.0&quot;</span></code></p></li>
+<li><p>For Mahti: <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">TORCH_CUDA_ARCH_LIST=&quot;8.0&quot;</span></code></p></li>
+</ul>
+<p>Then install with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">gptqmodel</span><span class="o">==</span><span class="m">4</span>.0.0<span class="w"> </span>--no-build-isolation<span class="w"> </span>--cache-dir<span class="w"> </span>./.pip-cache
+</pre></div>
+</div>
+<p>This version of gptqmodel has been tested with the PyTorch 2.7 module.</p>
+<p>Note: When quantizing models that use Rotary Positional Embeddings (RoPE), such as LlaMA, you might encounter runtime errors related to rotary dimensions. The current fix is to downgrade transformers to version 4.51.3.</p>
+<p>For the <strong>gptq-modifier</strong> example, you need to install the llmcompressor library.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>llmcompressor<span class="w"> </span>--cache-dir<span class="w"> </span>./.pip-cache
+</pre></div>
+</div>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>The launch scripts for gptq-config are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">run-gptq-config-lumi.sh</span></code> - quantizes model on LUMI with 1 GPU</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run-gptq-config-mahti.sh</span></code> - quantizes model on Mahti with 1 GPU</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run-gptq-config-puhti.sh</span></code> - quantizes model on Puhti with 1 GPU</p></li>
+</ul>
+<p>Similarly, for gptq-modifier:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">run-gptq-modifier-lumi.sh</span></code> - quantizes model on LUMI with 1 GPU</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run-gptq-modifier-mahti.sh</span></code> - quantizes model on Mahti with 1 GPU</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run-gptq-modifier-puhti.sh</span></code> - quantizes model on Puhti with 1 GPU</p></li>
+</ul>
+<p><strong>Note:</strong> the scripts are made to be run on <code class="docutils literal notranslate"><span class="pre">gputest</span></code> or <code class="docutils literal notranslate"><span class="pre">dev-g</span></code> partition with a 30 minutes time-limit. You have to select the proper partition for longer jobs for your real runs. Additionally, change the <code class="docutils literal notranslate"><span class="pre">--account</span></code> parameter to your own project code.</p>
+<p>For example to run on LUMI, you would run the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>run-gptq-config-lumi.sh
+</pre></div>
+</div>
+<p>You can also increase the memory and number of GPUs if you decide to run quantization on larger models.</p>
+</section>
+<section id="gptq-config-py">
+<h2><code class="docutils literal notranslate"><span class="pre">gptq-config.py</span></code><a class="headerlink" href="#gptq-config-py" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Uses Hugging Face 🤗 <code class="docutils literal notranslate"><span class="pre">transformers</span></code> with <a class="reference external" href="https://huggingface.co/docs/transformers/en/quantization/gptq"><code class="docutils literal notranslate"><span class="pre">GPTQConfig</span></code></a>.</p></li>
+<li><p>Saves both the full-precision and quantized models.</p></li>
+<li><p>Compares outputs, inference latency, and model size.</p></li>
+</ul>
+</section>
+<section id="gptq-modifier-py">
+<h2><code class="docutils literal notranslate"><span class="pre">gptq-modifier.py</span></code><a class="headerlink" href="#gptq-modifier-py" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Uses <a class="reference external" href="https://github.com/vllm-project/llm-compressor">LLM Compressor</a> with a <code class="docutils literal notranslate"><span class="pre">GPTQModifier</span></code> recipe.</p></li>
+<li><p>Runs explicit <strong>calibration</strong> on a subset of the <a class="reference external" href="https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k">Ultrachat-200k</a> dataset.</p></li>
+<li><p>Saves both the full-precision and quantized models.</p></li>
+<li><p>Compares outputs, inference latency, and model size.</p></li>
+<li><p>Provides finer control over quantization schemes (e.g. <code class="docutils literal notranslate"><span class="pre">W4A16</span></code>, <code class="docutils literal notranslate"><span class="pre">ignore=[&quot;lm_head&quot;]</span></code>).</p></li>
+</ul>
+</section>
+<section id="output-includes">
+<h2>Output Includes<a class="headerlink" href="#output-includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Generated text before and after quantization.</p></li>
+<li><p>Inference time comparison.</p></li>
+<li><p>Model size (MB) before and after quantization.</p></li>
+<li><p>Note that the effect of quantization on inference might not be noticeable for smaller models.</p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The current scripts use <strong>OPT-125M</strong> for fast experimentation. You can replace <code class="docutils literal notranslate"><span class="pre">model_name</span></code> with a larger model. In this case, you might want to disable saving the models.</p></li>
+<li><p>For large models, <code class="docutils literal notranslate"><span class="pre">device_map=&quot;auto&quot;</span></code> lets 🤗 Accelerate handle placement across GPUs.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">GPTQConfig</span></code> path is simpler and integrates directly with Hugging Face pipelines, while the <code class="docutils literal notranslate"><span class="pre">GPTQModifier</span></code> path gives you more flexibility for research and custom recipes.</p></li>
+<li><p>Feel free to experiment with different values for <code class="docutils literal notranslate"><span class="pre">num_calibration_samples</span></code> and <code class="docutils literal notranslate"><span class="pre">max_seq_lenght</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Quantization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AWQ.html" class="btn btn-neutral float-right" title="AWQ Quantization with LLM Compressor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Mahnoor Mahnoor.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
