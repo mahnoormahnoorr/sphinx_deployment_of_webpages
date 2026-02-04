@@ -21,10 +21,10 @@ cd Quantization
 Step 2 — Create a virtual environment + install Sphinx
 
 ```bash
-macOS / Linux
-python -m venv .venv
+
+python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -U pip
+python3 -m pip install -U pip
 pip install sphinx sphinx-rtd-theme myst-parser
 ```
 
