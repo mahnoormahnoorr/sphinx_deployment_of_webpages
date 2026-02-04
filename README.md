@@ -4,7 +4,7 @@ WARNING: This repo is in development stage.
 
 This repo contain information about sphinx deployment of github into a webpage. Instractuion folder has all relevant information about how to run it. 
 
-Please read [Instructions]([https://example.com](https://github.com/mahnoormahnoorr/sphinx_deployment_of_webpages/tree/main/Instructions)) very carefully. 
+Please read [Instructions]([https://example.com](https://github.com/mahnoormahnoorr/sphinx_deployment_of_webpages/tree/main/Instructions) very carefully. 
 
 When you run this command `sphinx-quickstart docs` it creates files within docs folder: build, make.bat, Makefile, source. 
 
