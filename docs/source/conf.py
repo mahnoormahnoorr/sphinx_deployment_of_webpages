@@ -28,6 +28,8 @@ language = 'en'
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static_']
+html_logo = "img/LUMI_light.svg"
+html_favicon = "img/favicon.png"
 
 
 source_suffix = {
