@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantization &mdash; quant v.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/lumi.css?v=4a224b01" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8a49c756"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quantization Examples with Transformers &amp; LLM Compressor" href="GPTQ.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/LUMI_light.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GPTQ.html">Quantization Examples with Transformers &amp; LLM Compressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AWQ.html">AWQ Quantization with LLM Compressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BitsAndBytes.html">BitsAndBytes Quantization with Transformers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">quant</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quantization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quantization">
+<h1>Quantization<a class="headerlink" href="#quantization" title="Link to this heading"></a></h1>
+<p>This repository explores <strong>quantization methods for Large Language Models (LLMs)</strong>.<br />
+Quantization is a key technique for reducing model size and inference cost, enabling LLMs to run efficiently on consumer hardware or limited GPU memory.</p>
+<p>We provide examples and experiments for:</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://github.com/mahnoormahnoorr/Quantization/tree/main/bitsandbytes">BitsAndBytes (bnb)</a></strong> – nf4 quantization using the Hugging Face integration.</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/mahnoormahnoorr/Quantization/tree/main/AWQ">AWQ (Activation-aware Weight Quantization)</a></strong> – a method that preserves accuracy by considering activation statistics.</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/mahnoormahnoorr/Quantization/tree/main/GPTQ">GPTQ (Gradient Post-training Quantization)</a></strong> – post-training quantization optimized for autoregressive transformers.</p></li>
+</ul>
+<hr class="docutils" />
+<section id="what-to-expect-in-this-repo">
+<h2>📖 What to Expect in This Repo<a class="headerlink" href="#what-to-expect-in-this-repo" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Implementation Examples</strong></p>
+<ul class="simple">
+<li><p>Scripts for loading, quantizing, and saving models.</p></li>
+<li><p>Examples include small models (for example; <code class="docutils literal notranslate"><span class="pre">facebook/opt-125m</span></code>) so you can try things quickly, and notes for scaling to larger models.</p></li>
+</ul>
+</li>
+<li><p><strong>Benchmarks</strong></p>
+<ul class="simple">
+<li><p>Inference time comparisons before and after quantization.</p></li>
+<li><p>Model size reduction (disk footprint in MB).</p></li>
+</ul>
+</li>
+<li><p><strong>Guides &amp; Utilities</strong></p>
+<ul class="simple">
+<li><p>Helper functions for measuring model size, timing inference, and testing the quantized model.</p></li>
+<li><p>Notes on how to run the examples on Puhti, Mahti and LUMI.</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GPTQ.html">Quantization Examples with Transformers &amp; LLM Compressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AWQ.html">AWQ Quantization with LLM Compressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BitsAndBytes.html">BitsAndBytes Quantization with Transformers</a></li>
+</ul>
+</div>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://docs.lumi-supercomputer.eu/">LUMI Documentation</a></p>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p><img alt="" src="img/eurocc.svg" />
+<img alt="" src="img/coderefinery.svg" /></p>
+<p>This project has received funding from the European High-Performance Computing
+Joint Undertaking (JU) under grant agreement No 101101903.</p>
+<p>The lesson file structure and browsing layout is inspired by and derived from
+<a class="reference external" href="https://github.com/coderefinery/sphinx-lesson">work</a> by <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> licensed under the
+<a class="reference external" href="https://opensource.org/licenses/mit-license.html">MIT license</a>. We have copied and adapted
+most of their license text.</p>
+<section id="instructional-material">
+<h3>Instructional Material<a class="headerlink" href="#instructional-material" title="Link to this heading"></a></h3>
+<p>This instructional material is made available under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license (CC-BY-4.0)</a>.
+The following is a human-readable summary of (and not a substitute for) the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/legalcode">full legal text of the CC-BY-4.0 license</a>.
+You are free to:</p>
+<ul class="simple">
+<li><p><strong>share</strong> - copy and redistribute the material in any medium or format</p></li>
+<li><p><strong>adapt</strong> - remix, transform, and build upon the material for any purpose,
+even commercially.</p></li>
+</ul>
+<p>The licensor cannot revoke these freedoms as long as you follow these license terms:</p>
+<ul class="simple">
+<li><p><strong>Attribution</strong> - You must give appropriate credit, provide a
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">link to the license</a>, and indicate if changes were
+made. You may do so in any reasonable manner, but not in any way that suggests
+the licensor endorses you or your use.</p></li>
+<li><p><strong>No additional restrictions</strong> - You may not apply legal terms or
+technological measures that legally restrict others from doing anything the
+license permits.</p></li>
+</ul>
+<p>With the understanding that:</p>
+<ul class="simple">
+<li><p>You do not have to comply with the license for elements of the material in
+the public domain or where your use is permitted by an applicable exception
+or limitation.</p></li>
+<li><p>No warranties are given. The license may not give you all of the permissions
+necessary for your intended use. For example, other rights such as
+publicity, privacy, or moral rights may limit how you use the material.</p></li>
+</ul>
+</section>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h3>
+<p>Except where otherwise noted, the example programs and other software provided
+with this repository are made available under the <a class="reference external" href="https://opensource.org/">OSI</a>-approved
+<a class="reference external" href="https://opensource.org/licenses/mit-license.html">MIT license</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="GPTQ.html" class="btn btn-neutral float-right" title="Quantization Examples with Transformers &amp; LLM Compressor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Mahnoor Mahnoor.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
