@@ -51,8 +51,8 @@ BitsAndBytes.md
 
 ## Credits
 
-![](img/eurocc.svg)
-![](img/coderefinery.svg)
+![](_static_/eurocc.svg)
+![](_static_/coderefinery.svg)
 
 This project has received funding from the European High-Performance Computing
 Joint Undertaking (JU) under grant agreement No 101101903.
