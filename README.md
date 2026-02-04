@@ -34,3 +34,5 @@ Under Source:
 Save
 
 Your site will be live. 
+
+![LUMI Logo](img/LUMI_Quant_Webpage.png)
